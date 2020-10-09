@@ -10,6 +10,7 @@ const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
   const [characters, setCharacters] = useState([]);
+  const [charName, setCharName] = useState('')
   const [activeCharId, setActiveCharID] = useState(1);
 
   const openChar = id => {
@@ -33,14 +34,19 @@ const App = () => {
     <div className="App">
       <h1 className="Header">Rick and Morty Characters Dawg</h1>
       {/* Lets do some mapping to send down our character info */}
-      {
-        characters.map(charObj => {
-          return <Char
-            key={charObj.id} 
-            character={charObj}
-          />
-        })
-      }
+      <div className="flexWrapper">
+        {
+          characters.map(charObj => {
+            return <Char
+              charID={charObj.id} 
+              charName={charObj.name}
+              charImage={charObj.image}
+              charWorld={charObj.origin.name}
+            />
+          })
+        }
+      </div>
+      
     </div>
   );
 }
